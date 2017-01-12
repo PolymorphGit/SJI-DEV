@@ -29,7 +29,7 @@ public class Main {
             return new ModelAndView(attributes, "index.ftl");
         }, new FreeMarkerEngine());
 
-    get("/db", (req, res) -> {
+    get("/Test", (req, res) -> {
       Connection connection = null;
       Map<String, Object> attributes = new HashMap<>();
       try {
@@ -57,6 +57,25 @@ public class Main {
       }
     }, new FreeMarkerEngine());
 
+    
+    get("/IdealPrice", (req, res) ->{
+    	String id= req.queryParams("id");
+    	return CalculateIdealPrice(id);
+    });
+      
+  }
+  
+  public static String CalculateIdealPrice(String id)
+  {
+	  if(id == null)
+	  {
+		  return "ID is NULL";
+	  }
+	  else if(id == "")
+	  {
+		  return "ID is Blank";
+	  }
+	  return "Success";
   }
 
 }
