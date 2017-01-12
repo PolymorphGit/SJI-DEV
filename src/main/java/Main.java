@@ -39,13 +39,12 @@ public class Main {
         //stmt.executeUpdate("CREATE TABLE IF NOT EXISTS ticks (tick timestamp)");
         //stmt.executeUpdate("INSERT INTO ticks VALUES (now())");
         //ResultSet rs = stmt.executeQuery("SELECT tick FROM ticks");
-        ResultSet rs = stmt.executeQuery("SELECT * FROM salesforce.NPD__c");
+        ResultSet rs = stmt.executeQuery("SELECT * FROM salesforce.Account");
 
         ArrayList<String> output = new ArrayList<String>();
         while (rs.next()) {
-          //output.add( "Read from DB: " + rs.getTimestamp("tick"));
-        	output.add( "Read from DB: " + rs.getString("name") + " , Annual Volume: " + rs.getString("project_name__c") + " , Annual Volume: " + rs.getString("annual_volume_pcs__c"));
-			
+          Account acc = new Account(rs);
+          output.add("Name: " + acc.Name + ", Type: " + acc.Type + ", Status: " + acc.AccountStatus);
         }
 
         attributes.put("results", output);
