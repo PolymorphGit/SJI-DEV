@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.Map;
 
+import javax.management.Query;
+
 import com.heroku.sdk.jdbc.DatabaseUrl;
 
 class IdealPrice 
@@ -15,6 +17,7 @@ class IdealPrice
 	private ArrayList<FG> listFG;
 	
 	private Integer count = 0;
+	private String QueryCmd = "";
 	
 	public IdealPrice(ArrayList<NPD> newNPD)
 	{
@@ -72,6 +75,8 @@ class IdealPrice
 			listID += "'" + npd.Id + "', ";
 		}
 		listID = listID.substring(0, listID.length()-1);
+		
+		QueryCmd = "SELECT * FROM salesforce.Sourcing__c where NPD__c in (" + listID + ")";
 		try 
 		{
 			count = 0;
@@ -91,7 +96,7 @@ class IdealPrice
 	
 	public String getResult()
 	{
-		String output = "Count: " + count + "<br/> ";
+		String output = "Query: " + QueryCmd + "<br/> " + "Count: " + count + "<br/> ";
 		
 		for(FG fg : listFG)
 		{
