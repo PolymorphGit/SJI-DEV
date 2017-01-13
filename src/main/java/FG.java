@@ -22,7 +22,7 @@ public class FG
 	public FG(ResultSet rs)
 	{
 		try {
-			Id = rs.getString("Id");
+			Id = rs.getString("SFID");
 			Name = rs.getString("Name");
 			AnnualVolume = rs.getDouble("Annual_Volume_Summary__c");
 			LaunchVolume =  rs.getDouble("Launch__c");
