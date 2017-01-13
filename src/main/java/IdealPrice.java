@@ -31,12 +31,12 @@ class IdealPrice
 		try {
 			ResultSet rs = stmt.executeQuery("SELECT * FROM salesforce.NPD__c where Account_Name__c='" + newAcc.Id + "'");
 			
-	        while (rs.next()) 
+	        while (rs.next()) 	
 	        {
 	        	listNPD.add(new NPD(rs));
 	        }
 	        
-	        LoadData();
+	        //LoadData();
 		} 
 		catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -83,13 +83,21 @@ class IdealPrice
 	
 	public String getResult()
 	{
+		
 		String output = "";
-		for(FG fg : listFG)
+		/*
+		 * for(FG fg : listFG)
 		{
 			output += fg.Name + "(" + fg.AnnualVolume + "), ";
 		}
-		
+		*/
+		for(NPD npd : listNPD)
+		{
+			output += "Name: " + npd.Name + ", ";
+        }
 		return output;
+		
+		
 		//return "Success";
 	}
 }
