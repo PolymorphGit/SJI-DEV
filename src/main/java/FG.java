@@ -28,7 +28,7 @@ public class FG
 			LaunchVolume =  rs.getDouble("Launch__c");
 			MOQ1 = rs.getDouble("Finished_Goods_MOQ_Max__c");
 			MOQ2 = rs.getDouble("Finished_Goods_MOQ_Min__c");
-			MOQ3 = rs.getDouble("Finished_Goods_MOQ_Option_3__c");
+			//MOQ3 = rs.getDouble("Finished_Goods_MOQ_Option_3__c");
 			UnitPackSize = rs.getDouble("Unit_Pack_Size__c");
 			
 			npdId = rs.getString("NPD__c");
