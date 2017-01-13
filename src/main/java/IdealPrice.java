@@ -14,6 +14,8 @@ class IdealPrice
 	private Account account;
 	private ArrayList<FG> listFG;
 	
+	private Integer count = 0;
+	
 	public IdealPrice(ArrayList<NPD> newNPD)
 	{
 		ConnectDB();		
@@ -72,10 +74,12 @@ class IdealPrice
 		
 		try 
 		{
+			count = 0;
 			ResultSet rs = stmt.executeQuery("SELECT * FROM salesforce.Sourcing__c where NPD__c in (" + listID + ")");
 			while (rs.next()) 
 	        {
 	        	listFG.add(new FG(rs));
+	        	count++;
 	        }
 		} 
 		catch (SQLException e) 
@@ -87,7 +91,7 @@ class IdealPrice
 	
 	public String getResult()
 	{
-		String output = "";
+		String output = "Count: " + count + "<br/> ";
 		
 		for(FG fg : listFG)
 		{
