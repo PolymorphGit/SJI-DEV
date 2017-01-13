@@ -17,6 +17,7 @@ public class NPD {
 	
 	public String accId;
 	public Account account;
+	public ArrayList<FG> listFG;
 	
 	public NPD(ResultSet rs)
 	{		
@@ -30,6 +31,7 @@ public class NPD {
 			ProjectType = rs.getString("Project_Type__c");
 			
 			accId = rs.getString("Account__c");
+			listFG = new ArrayList<FG>();
 		} 
 		catch (SQLException e) {}
 		
@@ -41,5 +43,11 @@ public class NPD {
 		{
 			account = acc;
 		}
+	}
+	
+	public void AddFG(FG newFG)
+	{
+		listFG.add(newFG);
+		newFG.linkNPD(this);
 	}
 }

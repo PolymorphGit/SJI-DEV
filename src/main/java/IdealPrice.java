@@ -12,17 +12,16 @@ class IdealPrice
 {
 	private Connection connection = null;
 	private Statement stmt = null;
-	private ArrayList<NPD> listNPD;
+	private HashMap<String, NPD> DictNPD;
 	private Account account;
-	private ArrayList<FG> listFG;
 	
 	private Integer count = 0;
 	private String QueryCmd = "";
 	
-	public IdealPrice(ArrayList<NPD> newNPD)
+	public IdealPrice(HashMap<String, NPD> newNPD)
 	{
 		ConnectDB();		
-		listNPD = newNPD;
+		DictNPD = newNPD;
 		
 		LoadData();
 	}
@@ -31,15 +30,15 @@ class IdealPrice
 	{
 		ConnectDB();		
 		account = newAcc;
-		listNPD = new ArrayList<NPD>();
-		listFG = new ArrayList<FG>();
+		DictNPD = new HashMap<String, NPD>();
 		
 		try {
 			ResultSet rs = stmt.executeQuery("SELECT * FROM salesforce.NPD__c where Account_Name__c='" + newAcc.Id + "'");
 			
 	        while (rs.next()) 	
 	        {
-	        	listNPD.add(new NPD(rs));
+	        	NPD newNPD = new NPD(rs);
+	        	DictNPD.put(newNPD.Id, newNPD);
 	        }
 	        
 	        LoadData();
@@ -69,7 +68,7 @@ class IdealPrice
 	{
 		String listID = "";
 		
-		for(NPD npd : listNPD)
+		for(NPD npd : DictNPD.values())
 		{
 			listID += "'" + npd.Id + "', ";
 		}
@@ -82,7 +81,8 @@ class IdealPrice
 			ResultSet rs = stmt.executeQuery("SELECT * FROM salesforce.Sourcing__c where NPD__c in (" + listID + ")");
 			while (rs.next()) 
 	        {
-	        	listFG.add(new FG(rs));
+				FG newFG = new FG(rs);
+				DictNPD.get(newFG.npdId).AddFG(newFG);
 	        	count++;
 	        }
 		} 
@@ -96,13 +96,15 @@ class IdealPrice
 	public String getResult()
 	{
 		String output = "Query: " + QueryCmd + "<br/> " + "Count: " + count + "<br/> ";
-		
-		for(FG fg : listFG)
+		for(NPD npd : DictNPD.values())
 		{
-			output += fg.Name + "(" + fg.AnnualVolume + "), ";
+			output += "NPD Id; " + npd.Id + "<br/>";
+			for(FG fg : npd.listFG)
+			{
+				output += " - FG Name: " + fg.Name + ", MOQ: " + fg.MOQ1 + ", Annual: " + fg.AnnualVolume + ", Launch:" + fg.LaunchVolume + "<br/>";
+			}
 		}
 		return output;
-		
 		//return "Success";
 	}
 }
