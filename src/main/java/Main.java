@@ -83,11 +83,12 @@ public class Main {
 	try {
 		connection = DatabaseUrl.extract().getConnection();
 		Statement stmt = connection.createStatement();
-	    ResultSet rs = stmt.executeQuery("SELECT * FROM salesforce.Account");
+	    ResultSet rs = stmt.executeQuery("SELECT * FROM salesforce.Account where SFID='" + id + "'");
 	    while (rs.next()) 
 	    {
 	        acc = new Account(rs);
-	        idealPrice = new IdealPrice(acc);
+	        return acc.Id;
+	        //idealPrice = new IdealPrice(acc);
 	    }
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
