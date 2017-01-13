@@ -5,7 +5,7 @@ import java.util.Map;
 
 import com.heroku.sdk.jdbc.DatabaseUrl;
 
-public class Account
+public class Account 
 {
 	public String Id;
 	public String Name;
@@ -42,8 +42,7 @@ public class Account
 			CustomerStatus = rs.getString("Brand__c");
 		} 
 		catch (SQLException e) {}
+		
 	}
-	
-	
-	
+		
 }

@@ -60,22 +60,44 @@ public class Main {
     
     get("/IdealPrice", (req, res) ->{
     	String id= req.queryParams("id");
-    	return CalculateIdealPrice(id);
+    	return CalculateIdealPricebyAccount(id);
     });
       
   }
   
-  public static String CalculateIdealPrice(String id)
+  public static String CalculateIdealPricebyAccount(String id)
   {
-	  if(id == null)
-	  {
+	if(id == null)
+	{
 		  return "ID is NULL";
-	  }
-	  else if(id == "")
-	  {
+	}
+	else if(id == "")
+	{
 		  return "ID is Blank";
-	  }
-	  return "Success";
+	}
+	  
+	Connection connection = null;
+	Account acc = null;
+	IdealPrice idealPrice = null;
+		   
+	try {
+		connection = DatabaseUrl.extract().getConnection();
+		Statement stmt = connection.createStatement();
+	    ResultSet rs = stmt.executeQuery("SELECT * FROM salesforce.Account");
+	    while (rs.next()) 
+	    {
+	        acc = new Account(rs);
+	        idealPrice = new IdealPrice(acc);
+	    }
+	} catch (SQLException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (URISyntaxException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+      
+	  return idealPrice.getResult();
   }
 
 }
