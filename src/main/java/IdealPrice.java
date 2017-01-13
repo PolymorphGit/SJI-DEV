@@ -71,7 +71,7 @@ class IdealPrice
 		{
 			listID += "'" + npd.Id + "', ";
 		}
-		
+		listID = listID.substring(0, listID.length()-1);
 		try 
 		{
 			count = 0;
