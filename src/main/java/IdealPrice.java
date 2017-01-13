@@ -27,6 +27,7 @@ class IdealPrice
 		ConnectDB();		
 		account = newAcc;
 		listNPD = new ArrayList<NPD>();
+		listFG = new ArrayList<FG>();
 		
 		try {
 			ResultSet rs = stmt.executeQuery("SELECT * FROM salesforce.NPD__c where Account_Name__c='" + newAcc.Id + "'");
@@ -62,13 +63,13 @@ class IdealPrice
 	private void LoadData()
 	{
 		String listID = "";
-		listID = "'a0fO000000AlPnSIAV', 'a0fO000000AlBIQIA3'";
-		/*
+		//listID = "'a0fO000000AlPnSIAV', 'a0fO000000AlBIQIA3'";
+		
 		for(NPD npd : listNPD)
 		{
 			listID += "'" + npd.Id + "', ";
 		}
-		*/
+		
 		try 
 		{
 			ResultSet rs = stmt.executeQuery("SELECT * FROM salesforce.Sourcing__c where NPD__c in (" + listID + ")");
@@ -87,13 +88,13 @@ class IdealPrice
 	public String getResult()
 	{
 		String output = "";
-		/*
+		
 		for(FG fg : listFG)
 		{
 			output += fg.Name + "(" + fg.AnnualVolume + "), ";
 		}
 		return output;
-		*/
-		return "Success";
+		
+		//return "Success";
 	}
 }
