@@ -44,7 +44,7 @@ public class Main {
         ArrayList<String> output = new ArrayList<String>();
         while (rs.next()) {
           Account acc = new Account(rs);
-          output.add("Name: " + acc.Name + ", Type: " + acc.Type + ", Status: " + acc.AccountStatus);
+          output.add("Id: " + acc.Id + "Name: " + acc.Name + ", Type: " + acc.Type + ", Status: " + acc.AccountStatus);
         }
 
         attributes.put("results", output);

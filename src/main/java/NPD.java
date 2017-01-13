@@ -21,7 +21,7 @@ public class NPD {
 	public NPD(ResultSet rs)
 	{		
 		try {
-			Id = rs.getString("Id");
+			Id = rs.getString("SFID");
 			Name = rs.getString("Name");
 			LaunchDate = rs.getDate("Launching_Date__c");
 			Plant = rs.getString("Plant__c");

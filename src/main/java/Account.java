@@ -27,7 +27,7 @@ public class Account
 	{
 		try 
 		{
-			Id = rs.getString("Id");
+			Id = rs.getString("SFID");
 			Name = rs.getString("Name");
 			Type = rs.getString("Type");
 			AccountSource = rs.getString("AccountSource");
