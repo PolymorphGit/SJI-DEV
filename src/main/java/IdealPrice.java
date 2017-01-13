@@ -41,7 +41,7 @@ class IdealPrice
 	        	DictNPD.put(newNPD.Id, newNPD);
 	        }
 	        
-	        //LoadData();
+	        LoadData();
 		} 
 		catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -82,7 +82,7 @@ class IdealPrice
 			while (rs.next()) 
 	        {
 				FG newFG = new FG(rs);
-				DictNPD.get(newFG.npdId).AddFG(newFG);
+				//DictNPD.get(newFG.npdId).AddFG(newFG);
 	        	count++;
 	        }
 		} 
@@ -98,7 +98,7 @@ class IdealPrice
 		String output = "Query: " + QueryCmd + "<br/> " + "Count: " + count + "<br/> ";
 		for(NPD npd : DictNPD.values())
 		{
-			output += "NPD Id; " + npd.Id + "<br/>";
+			output += "NPD Id: " + npd.Id + "<br/>";
 			/*
 			for(FG fg : npd.listFG)
 			{
