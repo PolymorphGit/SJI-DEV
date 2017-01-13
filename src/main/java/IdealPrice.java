@@ -61,16 +61,17 @@ class IdealPrice
 	
 	private void LoadData()
 	{
-		String listID = "a0fO000000AlPnSIAV, a0fO000000AlBIQIA3";
-		/*
+		String listID = "";
+		//listID = "a0fO000000AlPnSIAV, a0fO000000AlBIQIA3";
+		
 		for(NPD npd : listNPD)
 		{
 			listID += npd.Id + ", ";
 		}
-		*/
+		
 		try 
 		{
-			ResultSet rs = stmt.executeQuery("SELECT * FROM salesforce.FG__c where NPD__c in (" + listID + ")");
+			ResultSet rs = stmt.executeQuery("SELECT * FROM salesforce.Sourcing__c where NPD__c in (" + listID + ")");
 			while (rs.next()) 
 	        {
 	        	listFG.add(new FG(rs));
