@@ -62,13 +62,13 @@ class IdealPrice
 	private void LoadData()
 	{
 		String listID = "";
-		//listID = "a0fO000000AlPnSIAV, a0fO000000AlBIQIA3";
-		
+		listID = "a0fO000000AlPnSIAV, a0fO000000AlBIQIA3";
+		/*
 		for(NPD npd : listNPD)
 		{
 			listID += npd.Id + ", ";
 		}
-		
+		*/
 		try 
 		{
 			ResultSet rs = stmt.executeQuery("SELECT * FROM salesforce.Sourcing__c where NPD__c in (" + listID + ")");
