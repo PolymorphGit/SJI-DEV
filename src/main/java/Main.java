@@ -98,7 +98,8 @@ public class Main {
 		e.printStackTrace();
 	}
       
-	  return idealPrice.getResult();
+	//return idealPrice.getResult();
+	return "Success";
   }
 
 }
