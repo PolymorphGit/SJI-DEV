@@ -87,8 +87,7 @@ public class Main {
 	    while (rs.next()) 
 	    {
 	        acc = new Account(rs);
-	        return acc.Id;
-	        //idealPrice = new IdealPrice(acc);
+	        idealPrice = new IdealPrice(acc);
 	    }
 	} catch (SQLException e) {
 		// TODO Auto-generated catch block
@@ -98,8 +97,8 @@ public class Main {
 		e.printStackTrace();
 	}
       
-	//return idealPrice.getResult();
-	return "Success";
+	return idealPrice.getResult();
+	//return "Success";
   }
 
 }
