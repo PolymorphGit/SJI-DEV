@@ -82,6 +82,7 @@ class IdealPrice
 			while (rs.next()) 
 	        {
 				FG newFG = new FG(rs);
+				DictNPD.get(newFG.npdId);
 				//DictNPD.get(newFG.npdId).AddFG(newFG);
 	        	count++;
 	        }
