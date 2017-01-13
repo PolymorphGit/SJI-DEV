@@ -74,7 +74,7 @@ class IdealPrice
 			ResultSet rs = stmt.executeQuery("SELECT * FROM salesforce.Sourcing__c where NPD__c in (" + listID + ")");
 			while (rs.next()) 
 	        {
-	        	listFG.add(new FG(rs));
+	        	//listFG.add(new FG(rs));
 	        }
 		} 
 		catch (SQLException e) 
@@ -86,16 +86,14 @@ class IdealPrice
 	
 	public String getResult()
 	{
-		
 		String output = "";
-		
+		/*
 		for(FG fg : listFG)
 		{
 			output += fg.Name + "(" + fg.AnnualVolume + "), ";
 		}
 		return output;
-		
-		
-		//return "Success";
+		*/
+		return "Success";
 	}
 }
