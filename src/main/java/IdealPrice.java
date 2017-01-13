@@ -36,7 +36,7 @@ class IdealPrice
 	        	listNPD.add(new NPD(rs));
 	        }
 	        
-	        //LoadData();
+	        LoadData();
 		} 
 		catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -61,11 +61,13 @@ class IdealPrice
 	
 	private void LoadData()
 	{
-		String listID = "";
+		String listID = "a0fO000000AlPnSIAV, a0fO000000AlBIQIA3";
+		/*
 		for(NPD npd : listNPD)
 		{
 			listID += npd.Id + ", ";
 		}
+		*/
 		try 
 		{
 			ResultSet rs = stmt.executeQuery("SELECT * FROM salesforce.FG__c where NPD__c in (" + listID + ")");
@@ -85,16 +87,11 @@ class IdealPrice
 	{
 		
 		String output = "";
-		/*
-		 * for(FG fg : listFG)
+		
+		for(FG fg : listFG)
 		{
 			output += fg.Name + "(" + fg.AnnualVolume + "), ";
 		}
-		*/
-		for(NPD npd : listNPD)
-		{
-			output += "Name: " + npd.Name + ", ";
-        }
 		return output;
 		
 		
