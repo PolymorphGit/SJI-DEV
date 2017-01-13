@@ -74,7 +74,7 @@ class IdealPrice
 		{
 			listID += "'" + npd.Id + "', ";
 		}
-		listID = listID.substring(0, listID.length()-1);
+		listID = listID.substring(0, listID.length() - 2);
 		
 		QueryCmd = "SELECT * FROM salesforce.Sourcing__c where NPD__c in (" + listID + ")";
 		try 
