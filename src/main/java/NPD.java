@@ -49,8 +49,9 @@ public class NPD {
 	{
 		if(listFG != null)
 		{
-			listFG.add(newFG);
+			listFG = new ArrayList<FG>();
 		}
+		listFG.add(newFG);
 		//newFG.linkNPD(this);
 	}
 }
