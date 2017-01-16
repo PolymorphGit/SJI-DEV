@@ -82,8 +82,8 @@ class IdealPrice
 			while (rs.next()) 
 	        {
 				FG newFG = new FG(rs);
-				//DictNPD.get(newFG.npdId).AddFG(newFG);
-	        	QueryCmd += "<br/>" + newFG.npdId;
+				DictNPD.get(newFG.npdId).AddFG(newFG);
+	        	//QueryCmd += "<br/>" + newFG.npdId;
 				count++;
 	        }
 		} 
