@@ -47,7 +47,7 @@ public class NPD {
 	
 	public void AddFG(FG newFG)
 	{
-		if(listFG != null)
+		if(listFG == null)
 		{
 			listFG = new ArrayList<FG>();
 		}
