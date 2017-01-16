@@ -48,6 +48,6 @@ public class NPD {
 	public void AddFG(FG newFG)
 	{
 		listFG.add(newFG);
-		//newFG.linkNPD(this);
+		newFG.linkNPD(this);
 	}
 }
