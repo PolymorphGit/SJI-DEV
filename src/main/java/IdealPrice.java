@@ -100,12 +100,12 @@ class IdealPrice
 		for(NPD npd : DictNPD.values())
 		{
 			output += "NPD Id: " + npd.Id + "<br/>";
-			/*
+			
 			for(FG fg : npd.listFG)
 			{
 				output += " - FG Name: " + fg.Name + ", MOQ: " + fg.MOQ1 + ", Annual: " + fg.AnnualVolume + ", Launch:" + fg.LaunchVolume + "<br/>";
 			}
-			*/
+			
 		}
 		return output;
 		//return "Success";
