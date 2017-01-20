@@ -20,7 +20,7 @@ public class Main {
     port(Integer.valueOf(System.getenv("PORT")));
     staticFileLocation("/public");
 
-    get("/hello", (req, res) -> "Hello1234");
+    get("/hello", (req, res) -> "Hello World");
 
     get("/", (request, response) -> {
             Map<String, Object> attributes = new HashMap<>();
@@ -56,14 +56,18 @@ public class Main {
         if (connection != null) try{connection.close();} catch(SQLException e){}
       }
     }, new FreeMarkerEngine());
-
     
     get("/IdealPrice", (req, res) ->{
     	String id= req.queryParams("id");
     	return CalculateIdealPricebyAccount(id);
     });
-      
-  }
+    
+    get("/ExchangeRate", (req, res) ->{
+      	String id= req.queryParams("id");
+      	return id;
+    });
+    
+  } 
   
   public static String CalculateIdealPricebyAccount(String id)
   {
