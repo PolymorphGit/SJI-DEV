@@ -10,8 +10,7 @@ import com.heroku.sdk.jdbc.DatabaseUrl;
 
 class IdealPrice 
 {
-	private Connection connection = null;
-	private Statement stmt = null;
+	private ConnectData DB;
 	private HashMap<String, NPD> DictNPD;
 	private Account account;
 	
@@ -20,7 +19,7 @@ class IdealPrice
 	
 	public IdealPrice(HashMap<String, NPD> newNPD)
 	{
-		ConnectDB();		
+		DB = new ConnectData();
 		DictNPD = newNPD;
 		
 		LoadData();
@@ -28,12 +27,12 @@ class IdealPrice
 	
 	public IdealPrice(Account newAcc)
 	{
-		ConnectDB();		
+		DB = new ConnectData();	
 		account = newAcc;
 		DictNPD = new HashMap<String, NPD>();
 		
 		try {
-			ResultSet rs = stmt.executeQuery("SELECT * FROM salesforce.NPD__c where Account_Name__c='" + newAcc.Id + "'");
+			ResultSet rs = DB.Query("SELECT * FROM salesforce.NPD__c where Account_Name__c='" + newAcc.Id + "'");
 			
 	        while (rs.next()) 	
 	        {
@@ -49,20 +48,7 @@ class IdealPrice
 		}
 		
 	}
-	
-	private void ConnectDB()
-	{
-		try {
-			connection = DatabaseUrl.extract().getConnection();
-			stmt = connection.createStatement();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (URISyntaxException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+
 	
 	private void LoadData()
 	{
@@ -78,7 +64,7 @@ class IdealPrice
 		try 
 		{
 			count = 0;
-			ResultSet rs = stmt.executeQuery("SELECT * FROM salesforce.Sourcing__c where NPD__c in (" + listID + ")");
+			ResultSet rs = DB.Query("SELECT * FROM salesforce.Sourcing__c where NPD__c in (" + listID + ")");
 			while (rs.next()) 
 	        {
 				FG newFG = new FG(rs);
