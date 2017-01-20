@@ -30,7 +30,7 @@ class IdealPrice
 		DB = new ConnectData();	
 		account = newAcc;
 		DictNPD = new HashMap<String, NPD>();
-		
+		/*
 		try {
 			ResultSet rs = DB.Query("SELECT * FROM salesforce.NPD__c where Account_Name__c='" + newAcc.Id + "'");
 			
@@ -40,14 +40,14 @@ class IdealPrice
 	        	DictNPD.put(newNPD.Id, newNPD);
 	        }
 	        
-	        //LoadData();
+	        LoadData();
 	        
 		} 
 		catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		*/
 	}
 
 	
