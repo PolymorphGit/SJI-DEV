@@ -33,13 +33,13 @@ class IdealPrice
 		
 		try {
 			ResultSet rs = DB.Query("SELECT * FROM salesforce.NPD__c where Account_Name__c='" + newAcc.Id + "'");
-			
+			/*
 	        while (rs.next()) 	
 	        {
 	        	NPD newNPD = new NPD(rs);
 	        	DictNPD.put(newNPD.Id, newNPD);
 	        }
-	        
+	        */
 	        LoadData();
 		} 
 		catch (SQLException e) {
