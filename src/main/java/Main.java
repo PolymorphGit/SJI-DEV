@@ -67,7 +67,12 @@ public class Main {
       	return id;
     });
     
-  } 
+    get("/ExchangeRate", (req, res) ->{
+      	String name = req.queryParams("Name");
+      	return name;
+    });
+    
+  }				
   
   public static String CalculateIdealPricebyAccount(String id)
   {
