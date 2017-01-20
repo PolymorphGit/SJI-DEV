@@ -33,14 +33,15 @@ class IdealPrice
 		
 		try {
 			ResultSet rs = DB.Query("SELECT * FROM salesforce.NPD__c where Account_Name__c='" + newAcc.Id + "'");
-			/*
+			
 	        while (rs.next()) 	
 	        {
 	        	NPD newNPD = new NPD(rs);
 	        	DictNPD.put(newNPD.Id, newNPD);
 	        }
-	        */
-	        LoadData();
+	        
+	        //LoadData();
+	        
 		} 
 		catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -82,6 +83,7 @@ class IdealPrice
 	
 	public String getResult()
 	{
+			/*
 		String output = "Query: " + QueryCmd + "<br/> " + "Count: " + count + "<br/> ";
 		for(NPD npd : DictNPD.values())
 		{
@@ -94,6 +96,7 @@ class IdealPrice
 			
 		}
 		return output;
-		//return "Success";
+		*/
+		return "Success";
 	}
 }
