@@ -109,6 +109,5 @@ class IdealPrice
 		}
 		return output;
 		//return "Success";
-		///Test
 	}
 }
