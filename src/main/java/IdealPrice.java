@@ -47,9 +47,6 @@ class IdealPrice
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		
-		QueryCmd = "SELECT * FROM salesforce.Sourcing__c where NPD__c in (" + listID + ")";
-		
 	}
 	
 	public String getResult()
@@ -58,12 +55,12 @@ class IdealPrice
 		for(NPD npd : DictNPD.values())
 		{
 			output += "NPD Id: " + npd.Id + "<br/>";
-			
+			/*
 			for(FG fg : npd.listFG)
 			{
 				output += " - FG Name: " + fg.Name + ", MOQ: " + fg.MOQ1 + ", Annual: " + fg.AnnualVolume + ", Launch:" + fg.LaunchVolume + "<br/>";
 			}
-			
+			*/
 		}
 		return output;
 		//return "Success";
