@@ -72,7 +72,7 @@ public class NPD {
 			while (rs.next()) 
 	        {
 				FG newFG = new FG(rs);
-				//newFG.linkNPD(this);
+				newFG.linkNPD(this);
 				//listFG.add(newFG);
 	        }
 		} 
