@@ -27,7 +27,15 @@ public class NPD {
 	public NPD(String NPDId)
 	{
 		ResultSet rs = DataManager.Query("SELECT * FROM salesforce.NPD__c where Account_Name__c='" + NPDId + "'");
-		LoadData(rs);
+		try {
+			if(rs.next())
+			{
+				LoadData(rs);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	private void LoadData(ResultSet rs)

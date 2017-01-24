@@ -27,7 +27,15 @@ public class FG
 	public FG(String id)
 	{
 		ResultSet rs = DataManager.Query("SELECT * FROM salesforce.Sourcing__c where NPD__c in (" + id + ")");
-		LoadData(rs);
+		try {
+			if(rs.next())
+			{
+				LoadData(rs);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	private void LoadData(ResultSet rs)

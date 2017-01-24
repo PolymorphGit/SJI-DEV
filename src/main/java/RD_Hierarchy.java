@@ -10,7 +10,25 @@ public class RD_Hierarchy {
 	public double scrap;
 	
 	public RD_Hierarchy(ResultSet rs) {
-		
+		LoadData(rs);
+	}
+	
+	public RD_Hierarchy(String id)
+	{
+		ResultSet rs = DataManager.Query("Select * from salesforce.RD_Hierarchy__c where SFID='" + id + "'");
+		try {
+			if(rs.next())
+			{
+				LoadData(rs);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	private void LoadData(ResultSet rs)
+	{
 		try {
 			
 			id = rs.getString("SFID");
@@ -20,11 +38,7 @@ public class RD_Hierarchy {
 			scrap = rs.getDouble("scrap__c");
 			
 		} catch(SQLException sql) {
-			
-			sql.getMessage();
-			
+			sql.getMessage();	
 		}
-	
 	}
-	
 }

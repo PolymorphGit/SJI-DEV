@@ -15,7 +15,25 @@ public class Formula {
 	public String refer;
 	
 	public Formula(ResultSet rs) {
-		
+		LoadData(rs);
+	}
+	
+	public Formula(String id)
+	{
+		ResultSet rs = DataManager.Query("SELECT * FROM salesforce.Formula__c where SFID='" + id + "'");
+		try {
+			if(rs.next())
+			{
+				LoadData(rs);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	private void LoadData(ResultSet rs)
+	{
 		try {
 			
 			id = rs.getString("SFID");
@@ -40,7 +58,5 @@ public class Formula {
 			
 			e.getMessage();
 		}
-		
 	}
-	
 }
