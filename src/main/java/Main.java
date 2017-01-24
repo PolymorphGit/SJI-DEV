@@ -83,10 +83,10 @@ public class Main {
 	}
 	
 	Account acc = new Account(id);
-	IdealPrice idealPrice = new IdealPrice(acc);
+	//IdealPrice idealPrice = new IdealPrice(acc);
       
-	return idealPrice.getResult();
-	//return "Success";
+	//return idealPrice.getResult();
+	return "Success";
   }
 
 }
