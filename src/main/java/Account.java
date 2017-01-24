@@ -31,7 +31,15 @@ public class Account
 	public Account(String id)
 	{
 		ResultSet rs = DataManager.Query("SELECT * FROM salesforce.Account where SFID='" + id + "'");
-		LoadData(rs);
+		try {
+			if(rs.next())
+			{
+				LoadData(rs);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 		
 	private void LoadData(ResultSet rs)
