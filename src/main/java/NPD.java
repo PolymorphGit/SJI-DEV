@@ -50,7 +50,7 @@ public class NPD {
 			ProjectType = rs.getString("Project_Type__c");
 			
 			accId = rs.getString("Account__c");
-			//listFG = new ArrayList<FG>();
+			LoadFG();
 		} 
 		catch (SQLException e) {}
 	}
@@ -63,13 +63,23 @@ public class NPD {
 		}
 	}
 	
-	public void AddFG(FG newFG)
+	private void LoadFG()
 	{
-		if(listFG == null)
+		try 
 		{
 			listFG = new ArrayList<FG>();
+			ResultSet rs = DataManager.Query("SELECT * FROM salesforce.Sourcing__c where NPD__c = '" + Id + "'");
+			while (rs.next()) 
+	        {
+				FG newFG = new FG(rs);
+				listFG.add(newFG);
+	        }
+		} 
+		catch (SQLException e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		listFG.add(newFG);
-		//newFG.linkNPD(this);
 	}
+	
 }

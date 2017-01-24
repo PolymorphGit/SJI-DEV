@@ -14,72 +14,47 @@ class IdealPrice
 	private Statement stmt = null;
 	private HashMap<String, NPD> DictNPD;
 	private Account account;
-	
-	private Integer count = 0;
+
 	private String QueryCmd = "";
 	
-	public IdealPrice(HashMap<String, NPD> newNPD)
+	public IdealPrice(String listNPD)
 	{	
-		DictNPD = newNPD;
-		
-		LoadData();
+		DictNPD = new HashMap<String, NPD>();		
+        LoadData(DataManager.Query("SELECT * FROM salesforce.NPD__c where NPD__c in (" + listNPD + ")"));
+
+        QueryCmd = "SELECT * FROM salesforce.NPD__c where NPD__c in (" + listNPD + ")";
 	}
 	
 	public IdealPrice(Account newAcc)
 	{
 		account = newAcc;
 		DictNPD = new HashMap<String, NPD>();
-		
-		try {
-			ResultSet rs = DataManager.Query("SELECT * FROM salesforce.NPD__c where Account_Name__c='" + newAcc.Id + "'");
-			
-	        while (rs.next()) 	
-	        {
-	        	NPD newNPD = new NPD(rs);
-	        	DictNPD.put(newNPD.Id, newNPD);
-	        }
-	        
-	        LoadData();
-		} 
-		catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+        LoadData(DataManager.Query("SELECT * FROM salesforce.NPD__c where Account_Name__c='" + newAcc.Id + "'"));
+
+        QueryCmd = "SELECT * FROM salesforce.NPD__c where Account_Name__c='" + newAcc.Id + "'";
 	}
 	
-	private void LoadData()
+	private void LoadData(ResultSet rs)
 	{
 		String listID = "";
-		
-		for(NPD npd : DictNPD.values())
-		{
-			listID += "'" + npd.Id + "', ";
+		try {
+			while (rs.next()) 	
+			{
+				NPD newNPD = new NPD(rs);
+				DictNPD.put(newNPD.Id, newNPD);
+			}
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		}
-		listID = listID.length() > 2 ? listID.substring(0, listID.length() - 2) : listID;
 		
 		QueryCmd = "SELECT * FROM salesforce.Sourcing__c where NPD__c in (" + listID + ")";
-		try 
-		{
-			count = 0;
-			ResultSet rs = DataManager.Query("SELECT * FROM salesforce.Sourcing__c where NPD__c in (" + listID + ")");
-			while (rs.next()) 
-	        {
-				FG newFG = new FG(rs);
-				DictNPD.get(newFG.npdId).AddFG(newFG);
-	        	//QueryCmd += "<br/>" + newFG.npdId;
-				count++;
-	        }
-		} 
-		catch (SQLException e) 
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
 	}
 	
 	public String getResult()
 	{
-		String output = "Query: " + QueryCmd + "<br/> " + "Count: " + count + "<br/> ";
+		String output = "Query: " + QueryCmd + "<br/> ";
 		for(NPD npd : DictNPD.values())
 		{
 			output += "NPD Id: " + npd.Id + "<br/>";
