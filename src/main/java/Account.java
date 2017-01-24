@@ -25,6 +25,17 @@ public class Account
 	
 	public Account(ResultSet rs)
 	{
+		LoadData(rs);
+	}
+	
+	public Account(String id)
+	{
+		ResultSet rs = DataManager.Query("SELECT * FROM salesforce.Account where SFID='" + id + "'");
+		LoadData(rs);
+	}
+		
+	private void LoadData(ResultSet rs)
+	{
 		try 
 		{
 			Id = rs.getString("SFID");
@@ -42,7 +53,5 @@ public class Account
 			CustomerStatus = rs.getString("Brand__c");
 		} 
 		catch (SQLException e) {}
-		
 	}
-		
 }

@@ -45,7 +45,6 @@ class IdealPrice
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 	}
 	
 	private void LoadData()

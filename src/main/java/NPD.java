@@ -21,6 +21,17 @@ public class NPD {
 	
 	public NPD(ResultSet rs)
 	{		
+		LoadData(rs);
+	}
+	
+	public NPD(String NPDId)
+	{
+		ResultSet rs = DataManager.Query("SELECT * FROM salesforce.NPD__c where Account_Name__c='" + NPDId + "'");
+		LoadData(rs);
+	}
+	
+	private void LoadData(ResultSet rs)
+	{
 		try {
 			Id = rs.getString("SFID");
 			Name = rs.getString("Name");
@@ -34,7 +45,6 @@ public class NPD {
 			//listFG = new ArrayList<FG>();
 		} 
 		catch (SQLException e) {}
-		
 	}
 	
 	public void linkAccount(Account acc)

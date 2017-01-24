@@ -82,22 +82,8 @@ public class Main {
 		  return "ID is Blank";
 	}
 	
-	Account acc = null;
-	IdealPrice idealPrice = null;
-		   
-	try {
-	    ResultSet rs = DataManager.Query("SELECT * FROM salesforce.Account where SFID='" + id + "'");
-	    while (rs.next()) 
-	    {
-	        acc = new Account(rs);
-	        idealPrice = new IdealPrice(acc);
-	    }
-	} 
-	catch (SQLException e) 
-    {
-		// TODO Auto-generated catch block
-		e.getMessage();
-    }
+	Account acc = new Account(id);
+	IdealPrice idealPrice = new IdealPrice(acc);
       
 	return idealPrice.getResult();
 	//return "Success";
