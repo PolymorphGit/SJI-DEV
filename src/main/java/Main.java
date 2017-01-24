@@ -81,8 +81,7 @@ public class Main {
 	{
 		  return "ID is Blank";
 	}
-	  
-	Connection connection = null;
+	
 	Account acc = null;
 	IdealPrice idealPrice = null;
 		   
@@ -97,7 +96,7 @@ public class Main {
 	catch (SQLException e) 
     {
 		// TODO Auto-generated catch block
-		return e.getMessage();
+		e.getMessage();
     }
       
 	return idealPrice.getResult();
