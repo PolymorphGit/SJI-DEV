@@ -17,6 +17,7 @@ class IdealPrice
 	
 	private Integer count = 0;
 	private String QueryCmd = "";
+	private DataManager DB = new DataManager();
 	
 	public IdealPrice(HashMap<String, NPD> newNPD)
 	{
@@ -33,7 +34,7 @@ class IdealPrice
 		DictNPD = new HashMap<String, NPD>();
 		
 		try {
-			ResultSet rs = stmt.executeQuery("SELECT * FROM salesforce.NPD__c where Account_Name__c='" + newAcc.Id + "'");
+			ResultSet rs = DB.Query("SELECT * FROM salesforce.NPD__c where Account_Name__c='" + newAcc.Id + "'");
 			
 	        while (rs.next()) 	
 	        {

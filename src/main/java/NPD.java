@@ -31,7 +31,7 @@ public class NPD {
 			ProjectType = rs.getString("Project_Type__c");
 			
 			accId = rs.getString("Account__c");
-			listFG = new ArrayList<FG>();
+			//listFG = new ArrayList<FG>();
 		} 
 		catch (SQLException e) {}
 		

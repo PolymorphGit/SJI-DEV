@@ -56,14 +56,23 @@ public class Main {
         if (connection != null) try{connection.close();} catch(SQLException e){}
       }
     }, new FreeMarkerEngine());
-
     
     get("/IdealPrice", (req, res) ->{
     	String id= req.queryParams("id");
     	return CalculateIdealPricebyAccount(id);
     });
-      
-  }
+    
+    get("/ExchangeRate", (req, res) ->{
+      	String id= req.queryParams("id");
+      	return id;
+    });
+    
+    get("/ExchangeRate", (req, res) ->{
+      	String name = req.queryParams("Name");
+      	return name;
+    });
+    
+  }				
   
   public static String CalculateIdealPricebyAccount(String id)
   {
