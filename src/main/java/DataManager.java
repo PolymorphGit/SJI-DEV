@@ -7,17 +7,17 @@ import javax.management.Query;
 
 import com.heroku.sdk.jdbc.DatabaseUrl;
 
-class DataManager
+public class DataManager
 {
-	private Connection connection = null;
-	private Statement stmt = null;
+	private static Connection connection = null;
+	private static Statement stmt = null;
 	
-	public DataManager()
+	public static void init()
 	{
 		ConnectDB();
 	}
 	
-	private void ConnectDB()
+	private static void ConnectDB()
 	{
 		try {
 			connection = DatabaseUrl.extract().getConnection();
@@ -31,7 +31,7 @@ class DataManager
 		}
 	}
 	
-	public ResultSet Query(String cmd)
+	public static ResultSet Query(String cmd)
 	{
 		try
 		{
