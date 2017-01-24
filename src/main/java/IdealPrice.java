@@ -19,8 +19,7 @@ class IdealPrice
 	private String QueryCmd = "";
 	
 	public IdealPrice(HashMap<String, NPD> newNPD)
-	{
-		ConnectDB();		
+	{	
 		DictNPD = newNPD;
 		
 		LoadData();
@@ -28,7 +27,6 @@ class IdealPrice
 	
 	public IdealPrice(Account newAcc)
 	{
-		ConnectDB();		
 		account = newAcc;
 		DictNPD = new HashMap<String, NPD>();
 		
@@ -50,20 +48,6 @@ class IdealPrice
 		
 	}
 	
-	private void ConnectDB()
-	{
-		try {
-			connection = DatabaseUrl.extract().getConnection();
-			stmt = connection.createStatement();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (URISyntaxException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
 	private void LoadData()
 	{
 		String listID = "";
@@ -78,7 +62,7 @@ class IdealPrice
 		try 
 		{
 			count = 0;
-			ResultSet rs = stmt.executeQuery("SELECT * FROM salesforce.Sourcing__c where NPD__c in (" + listID + ")");
+			ResultSet rs = DataManager.Query("SELECT * FROM salesforce.Sourcing__c where NPD__c in (" + listID + ")");
 			while (rs.next()) 
 	        {
 				FG newFG = new FG(rs);

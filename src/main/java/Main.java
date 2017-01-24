@@ -31,16 +31,12 @@ public class Main {
         }, new FreeMarkerEngine());
 
     get("/Test", (req, res) -> {
-      Connection connection = null;
       Map<String, Object> attributes = new HashMap<>();
       try {
-        connection = DatabaseUrl.extract().getConnection();
-
-        Statement stmt = connection.createStatement();
-        //stmt.executeUpdate("CREATE TABLE IF NOT EXISTS ticks (tick timestamp)");
-        //stmt.executeUpdate("INSERT INTO ticks VALUES (now())");
-        //ResultSet rs = stmt.executeQuery("SELECT tick FROM ticks");
-        ResultSet rs = stmt.executeQuery("SELECT * FROM salesforce.Account");
+        //DataManager.Query("CREATE TABLE IF NOT EXISTS ticks (tick timestamp)");
+        //DataManager.Query("INSERT INTO ticks VALUES (now())");
+        //ResultSet rs = DataManager.Query("SELECT tick FROM ticks");
+        ResultSet rs = DataManager.Query("SELECT * FROM salesforce.Account");
 
         ArrayList<String> output = new ArrayList<String>();
         while (rs.next()) {
@@ -50,11 +46,11 @@ public class Main {
 
         attributes.put("results", output);
         return new ModelAndView(attributes, "db.ftl");
-      } catch (Exception e) {
-        attributes.put("message", "There was an error: " + e);
-        return new ModelAndView(attributes, "error.ftl");
-      } finally {
-        if (connection != null) try{connection.close();} catch(SQLException e){}
+      } 
+      catch (SQLException e) 
+      {
+    	  attributes.put("message", "There was an error: " + e);
+          return new ModelAndView(attributes, "error.ftl");
       }
     }, new FreeMarkerEngine());
     
@@ -91,21 +87,18 @@ public class Main {
 	IdealPrice idealPrice = null;
 		   
 	try {
-		connection = DatabaseUrl.extract().getConnection();
-		Statement stmt = connection.createStatement();
-	    ResultSet rs = stmt.executeQuery("SELECT * FROM salesforce.Account where SFID='" + id + "'");
+	    ResultSet rs = DataManager.Query("SELECT * FROM salesforce.Account where SFID='" + id + "'");
 	    while (rs.next()) 
 	    {
 	        acc = new Account(rs);
 	        idealPrice = new IdealPrice(acc);
 	    }
-	} catch (SQLException e) {
+	} 
+	catch (SQLException e) 
+    {
 		// TODO Auto-generated catch block
-		e.printStackTrace();
-	} catch (URISyntaxException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
+		return e.getMessage();
+    }
       
 	return idealPrice.getResult();
 	//return "Success";
