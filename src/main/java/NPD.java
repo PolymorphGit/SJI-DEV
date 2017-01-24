@@ -73,7 +73,7 @@ public class NPD {
 	        {
 				FG newFG = new FG(rs);
 				newFG.linkNPD(this);
-				//listFG.add(newFG);
+				listFG.add(newFG);
 	        }
 		} 
 		catch (SQLException e) 
