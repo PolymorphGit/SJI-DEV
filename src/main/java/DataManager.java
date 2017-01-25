@@ -35,7 +35,8 @@ public class DataManager
 	{
 		try
 		{
-			ResultSet rs = stmt.executeQuery(cmd);
+			Statement stmt2 = connection.createStatement();
+			ResultSet rs = stmt2.executeQuery(cmd);
 			return rs;
 		} catch (SQLException e)
 		{
