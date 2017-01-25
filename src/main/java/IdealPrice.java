@@ -58,7 +58,7 @@ class IdealPrice
 			
 			for(FG fg : npd.listFG)
 			{
-				output += " - FG Name: " + fg.Name + ", MOQ: " + fg.MOQ1 + ", Annual: " + fg.AnnualVolume + ", Launch:" + fg.LaunchVolume + "<br/>";
+				//output += " - FG Name: " + fg.Name + ", MOQ: " + fg.MOQ1 + ", Annual: " + fg.AnnualVolume + ", Launch:" + fg.LaunchVolume + "<br/>";
 			}
 			
 		}
