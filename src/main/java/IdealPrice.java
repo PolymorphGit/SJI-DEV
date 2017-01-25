@@ -38,12 +38,14 @@ class IdealPrice
 	private void LoadData(ResultSet rs)
 	{
 		try {
-			listID = "Row: " + rs.getFetchSize() + "<br/>";
+			listID = "ID: "; 
 			while (rs.next()) 	
 			{
 				NPD newNPD = new NPD(rs);
 				DictNPD.put(newNPD.Id, newNPD);
+				listID += newNPD.Id;
 			}
+			listID += "<br/>";
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
