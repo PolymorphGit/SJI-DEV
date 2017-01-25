@@ -41,19 +41,22 @@ class IdealPrice
 			Integer i = 1;
 			listID = "ID: "; 
 			while (rs.next()) 	
-			{
+			{	
 				listID += " No." + i + " ";
 				NPD newNPD = new NPD(rs);
 				DictNPD.put(newNPD.Id, newNPD);
 				listID += newNPD.Id + ", ";
 				i += 1;
+				rs.previous();
+				listID += rs.getString("SFID") + ", ";
+				rs.next();
 			}
-			listID += "<br/>";
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
 			listID += "Catch : " + e1.getMessage();
 			e1.printStackTrace();
 		}
+		listID += "<br/>";
 	}
 	
 	public String getResult()
