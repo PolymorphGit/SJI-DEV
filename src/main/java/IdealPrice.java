@@ -55,7 +55,7 @@ class IdealPrice
 		for(NPD npd : DictNPD.values())
 		{
 			output += "NPD Id: " + npd.Id + "<br/>";
-			output += "FG:" + npd.Debug + "<br/>"; 
+			output += "Debug: " + npd.Debug + "<br/>"; 
 			/*
 			for(FG fg : npd.listFG)
 			{
