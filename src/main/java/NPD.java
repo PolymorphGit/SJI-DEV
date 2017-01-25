@@ -19,6 +19,8 @@ public class NPD {
 	public Account account;
 	public ArrayList<FG> listFG;
 	
+	public String Debug;
+	
 	public NPD(ResultSet rs)
 	{		
 		LoadData(rs);
@@ -66,6 +68,7 @@ public class NPD {
 	
 	private void LoadFG()
 	{
+		Debug = "";
 		try 
 		{
 			ResultSet rs = DataManager.Query("SELECT * FROM salesforce.Sourcing__c where NPD__c = '" + Id + "'");
@@ -74,6 +77,8 @@ public class NPD {
 				FG newFG = new FG(rs);
 				newFG.linkNPD(this);
 				listFG.add(newFG);
+
+				Debug += newFG.Id + ", ";
 	        }
 		} 
 		catch (SQLException e) 
