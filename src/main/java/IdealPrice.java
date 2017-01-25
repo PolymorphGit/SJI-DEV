@@ -51,6 +51,7 @@ class IdealPrice
 			listID += "<br/>";
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
+			listID += "Catch : " + e1.getMessage();
 			e1.printStackTrace();
 		}
 	}
