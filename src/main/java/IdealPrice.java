@@ -38,7 +38,7 @@ class IdealPrice
 	private void LoadData(ResultSet rs)
 	{
 		try {
-			listID = "Row: " + rs.getRow() + "<br/>";
+			listID = "Row: " + rs.getFetchSize() + "<br/>";
 			while (rs.next()) 	
 			{
 				NPD newNPD = new NPD(rs);
