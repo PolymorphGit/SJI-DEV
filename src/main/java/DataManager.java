@@ -35,7 +35,8 @@ public class DataManager
 	{
 		try
 		{
-			return stmt.executeQuery(cmd);
+			ResultSet rs = stmt.executeQuery(cmd);
+			return rs;
 		} catch (SQLException e)
 		{
 			// TODO Auto-generated catch block

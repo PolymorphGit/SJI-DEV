@@ -47,9 +47,6 @@ class IdealPrice
 				DictNPD.put(newNPD.Id, newNPD);
 				listID += newNPD.Id + ", ";
 				i += 1;
-				rs.previous();
-				listID += rs.getString("SFID") + ", ";
-				rs.next();
 			}
 		} catch (SQLException e1) {
 			// TODO Auto-generated catch block
