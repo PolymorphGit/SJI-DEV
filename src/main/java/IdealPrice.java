@@ -38,12 +38,15 @@ class IdealPrice
 	{
 		try {
 			ResultSet rs = DataManager.Query(cmd);
+			Integer i = 1;
 			listID = "ID: "; 
 			while (rs.next()) 	
 			{
+				listID += " No." + i + " ";
 				NPD newNPD = new NPD(rs);
 				DictNPD.put(newNPD.Id, newNPD);
-				listID += newNPD.Id;
+				listID += newNPD.Id + ", ";
+				i += 1;
 			}
 			listID += "<br/>";
 		} catch (SQLException e1) {
