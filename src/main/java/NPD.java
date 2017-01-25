@@ -68,7 +68,7 @@ public class NPD {
 	
 	private void LoadFG()
 	{
-		Debug = "";
+		Debug = "Start";
 		try 
 		{
 			ResultSet rs = DataManager.Query("SELECT * FROM salesforce.Sourcing__c where NPD__c = '" + Id + "'");
