@@ -30,14 +30,15 @@ class IdealPrice
 	{
 		account = newAcc;
 		DictNPD = new HashMap<String, NPD>();
-        LoadData(DataManager.Query("SELECT * FROM salesforce.NPD__c where Account_Name__c='" + newAcc.Id + "'"));
 
         QueryCmd = "SELECT * FROM salesforce.NPD__c where Account_Name__c='" + newAcc.Id + "'";
+        LoadData(QueryCmd);
 	}
 	
-	private void LoadData(ResultSet rs)
+	private void LoadData(String cmd)
 	{
 		try {
+			ResultSet rs = DataManager.Query(cmd);
 			listID = "ID: "; 
 			while (rs.next()) 	
 			{
