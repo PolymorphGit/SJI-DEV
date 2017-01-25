@@ -44,12 +44,19 @@ public class NPD {
 	{
 		try {
 			Id = rs.getString("SFID");
+			Debug = "Get Id, ";
 			Name = rs.getString("Name");
+			Debug += "Get Name, ";
 			LaunchDate = rs.getDate("Launching_Date__c");
+			Debug += "Get Launch Date, ";
 			Plant = rs.getString("Plant__c");
+			Debug += "Get Plant, ";
 			PlantCode =  Plant.substring(0, 4);
+			Debug += "Set Plant Code, ";
 			ProjectName = rs.getString("Project_Name__c");
+			Debug += "Get Project Name, ";
 			ProjectType = rs.getString("Project_Type__c");
+			Debug += "Get Project Type";
 			
 			accId = rs.getString("Account__c");
 			listFG = new ArrayList<FG>();
@@ -68,7 +75,6 @@ public class NPD {
 	
 	private void LoadFG()
 	{
-		Debug = "Start";
 		try 
 		{
 			ResultSet rs = DataManager.Query("SELECT * FROM salesforce.Sourcing__c where NPD__c = '" + Id + "'");
