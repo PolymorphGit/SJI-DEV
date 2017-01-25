@@ -21,9 +21,8 @@ class IdealPrice
 	public IdealPrice(String listNPD)
 	{	
 		DictNPD = new HashMap<String, NPD>();		
-        LoadData(DataManager.Query("SELECT * FROM salesforce.NPD__c where NPD__c in (" + listNPD + ")"));
-
-        QueryCmd = "SELECT * FROM salesforce.NPD__c where NPD__c in (" + listNPD + ")";
+		QueryCmd = "SELECT * FROM salesforce.NPD__c where NPD__c in (" + listNPD + ")";
+        LoadData(QueryCmd);
 	}
 	
 	public IdealPrice(Account newAcc)
