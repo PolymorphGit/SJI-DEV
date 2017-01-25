@@ -70,10 +70,10 @@ public class NPD {
 	{
 		try 
 		{
-			ResultSet rs = DataManager.Query("SELECT * FROM salesforce.Sourcing__c where NPD__c = '" + Id + "'");
-			while (rs.next()) 
+			ResultSet rs2 = DataManager.Query("SELECT * FROM salesforce.Sourcing__c where NPD__c = '" + Id + "'");
+			while (rs2.next()) 
 	        {
-				FG newFG = new FG(rs);
+				FG newFG = new FG(rs2);
 				newFG.linkNPD(this);
 				listFG.add(newFG);
 	        }

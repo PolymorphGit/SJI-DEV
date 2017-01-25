@@ -39,7 +39,7 @@ class IdealPrice
 		try {
 			ResultSet rs = DataManager.Query(cmd);
 			Integer i = 1;
-			listID = "ID: " + rs.getString("SFID"); 
+			listID = "ID: "; 
 			while (rs.next()) 	
 			{
 				listID += " No." + i + " ";
