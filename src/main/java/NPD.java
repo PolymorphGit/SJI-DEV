@@ -56,11 +56,14 @@ public class NPD {
 			ProjectName = rs.getString("Project_Name__c");
 			Debug += "Get Project Name, ";
 			ProjectType = rs.getString("Project_Type__c");
-			Debug += "Get Project Type";
+			Debug += "Get Project Type, ";
 			
 			accId = rs.getString("Account__c");
+			Debug += "Set Account Id, ";
 			listFG = new ArrayList<FG>();
+			Debug += "new ArrayList, ";
 			LoadFG();
+			Debug += "Load FG Finish";
 		} 
 		catch (SQLException e) {}
 	}
