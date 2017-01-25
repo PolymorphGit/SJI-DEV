@@ -16,6 +16,7 @@ class IdealPrice
 	private Account account;
 
 	private String QueryCmd = "";
+	private String listID = "";
 	
 	public IdealPrice(String listNPD)
 	{	
@@ -36,8 +37,8 @@ class IdealPrice
 	
 	private void LoadData(ResultSet rs)
 	{
-		String listID = "";
 		try {
+			listID = "Row: " + rs.getRow() + "<br/>";
 			while (rs.next()) 	
 			{
 				NPD newNPD = new NPD(rs);
@@ -52,6 +53,7 @@ class IdealPrice
 	public String getResult()
 	{
 		String output = "Query: " + QueryCmd + "<br/> ";
+		output += listID;
 		for(NPD npd : DictNPD.values())
 		{
 			output += "NPD Id: " + npd.Id + "<br/>";
