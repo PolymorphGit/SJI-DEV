@@ -26,9 +26,9 @@ public class NPD {
 		LoadData(rs);
 	}
 	
-	public NPD(String NPDId)
+	public NPD(String id)
 	{
-		ResultSet rs = DataManager.Query("SELECT * FROM salesforce.NPD__c where Account_Name__c='" + NPDId + "'");
+		ResultSet rs = DataManager.Query("SELECT * FROM salesforce.NPD__c where Account_Name__c='" + id + "'");
 		try {
 			if(rs.next())
 			{

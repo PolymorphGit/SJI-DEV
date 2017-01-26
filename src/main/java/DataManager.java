@@ -10,7 +10,6 @@ import com.heroku.sdk.jdbc.DatabaseUrl;
 public class DataManager
 {
 	private static Connection connection = null;
-	private static Statement stmt = null;
 	
 	public static void init()
 	{
@@ -21,7 +20,6 @@ public class DataManager
 	{
 		try {
 			connection = DatabaseUrl.extract().getConnection();
-			stmt = connection.createStatement();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -35,8 +33,8 @@ public class DataManager
 	{
 		try
 		{
-			Statement stmt2 = connection.createStatement();
-			ResultSet rs = stmt2.executeQuery(cmd);
+			Statement stmt = connection.createStatement();
+			ResultSet rs = stmt.executeQuery(cmd);
 			return rs;
 		} catch (SQLException e)
 		{

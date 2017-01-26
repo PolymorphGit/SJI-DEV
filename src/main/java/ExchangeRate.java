@@ -17,10 +17,31 @@ public class ExchangeRate
 	public Date EndDate ;
 	public Double SellRate;
 	public Double RatioTo;
+	public Double BuyRateAfterRatio;
+	public Double SellRateAfterRatio;
 	public String accId;
 	
 	
 	public ExchangeRate(ResultSet rs)
+	{
+		LoadData(rs);
+	}
+	
+	public ExchangeRate(String id)
+	{
+		ResultSet rs = DataManager.Query("SELECT * FROM salesforce.Exchange_Rate__c where SFID='" + id + "'");
+		try {
+			if(rs.next())
+			{
+				LoadData(rs);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	private void LoadData(ResultSet rs)
 	{
 		try 
 		{
@@ -33,10 +54,10 @@ public class ExchangeRate
 			EndDate = rs.getDate("End_Date__c");
 			Currency = rs.getString("CurrencyIsoCode");
 			SellRate = rs.getDouble("Sell_Rate__c");
-			accId = rs.getString("Account__c");
+			
+			BuyRateAfterRatio = RatioFrom == 0 ? BuyRate : (RatioTo / RatioFrom) * BuyRate;
+			SellRateAfterRatio = RatioFrom == 0 ? SellRate : (RatioTo / RatioFrom) * SellRate;
 		} 
 		catch (SQLException e) {}
-
 	}
-
 }

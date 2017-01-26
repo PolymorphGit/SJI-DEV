@@ -64,9 +64,10 @@ public class Main {
       	return id;
     });
     
-    get("/ExchangeRate", (req, res) ->{
-      	String name = req.queryParams("Name");
-      	return name;
+    get("/Scale", (req, res) ->{
+      	String id = req.queryParams("id");
+      	Scale sc = new Scale(id);
+      	return sc.getData();
     });
     
   }				
