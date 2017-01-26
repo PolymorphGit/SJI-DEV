@@ -50,10 +50,10 @@ public class Scale {
 			Id = rs.getString("SFID");
 			Count = rs.getDouble("Count__c");
 			Currency = rs.getString("CurrencyIsoCode");
-			Customs = rs.getDouble("Customs__c");
-			Freight = rs.getDouble("Freight__c");
-			Insurance = rs.getDouble("Insurance__c");
-			Shipping = rs.getDouble("Shipping__c");
+			Customs = rs.getDouble("Customs__c") / 100;
+			Freight = rs.getDouble("Freight__c") / 100;
+			Insurance = rs.getDouble("Insurance__c") / 100;
+			Shipping = rs.getDouble("Shipping__c") / 100;
 			Inventory = rs.getDouble("Inventory__c");
 			Price = rs.getDouble("Price__c");
 			Quantity = rs.getDouble("Quantity__c");
