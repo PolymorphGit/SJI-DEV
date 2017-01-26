@@ -59,7 +59,7 @@ public class Scale {
 			Quantity = rs.getDouble("Quantity__c");
 			PiecePerScale = rs.getDouble("Piece_per_Scale__c");
 			
-			Price = Currency == "JPY" ? Price * 100 : Price;
+			Price = (Currency == "JPY" ? Price * 100 : Price);
 			LandedCostPerUnit = (Price * (1 + Freight / 10) * (1 + Customs / 10) * (1 + Insurance / 10) * (1 + Shipping / 10)) - Price;
 			UnitPriceAfterLandedCost = (Price / PiecePerScale) + LandedCostPerUnit;
 			
@@ -72,6 +72,6 @@ public class Scale {
 	
 	public String getData()
 	{
-		return "Currency: " + Currency + ", Price: " + Price + ", Unit Price(+ Landed Cost): " + UnitPriceAfterLandedCost;
+		return "Currency: " + Currency + ", Price: " + Price + ", Unit Price(+ Landed Cost): " + UnitPriceAfterLandedCost + ", Check: " + (Currency == "JPY");
 	}
 }
