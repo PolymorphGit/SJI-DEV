@@ -52,7 +52,7 @@ public class ExchangeRate
 			Name = rs.getString("Name");
 			StartDate = rs.getDate("Start_Date__c");
 			EndDate = rs.getDate("End_Date__c");
-			Currency = rs.getString("CurrencyIsoCode");
+			Currency = rs.getString("Currency__c");
 			SellRate = rs.getDouble("Sell_Rate__c");
 			
 			BuyRateAfterRatio = RatioFrom == 0 ? BuyRate : (RatioTo / RatioFrom) * BuyRate;
