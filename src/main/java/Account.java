@@ -62,4 +62,10 @@ public class Account
 		} 
 		catch (SQLException e) {}
 	}
+	
+	public String getData()
+	{
+		
+		return "Name: " + Name + ", Type: " + Type + ", Credit Limit: " + CreditLimit;
+	}
 }
