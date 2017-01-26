@@ -61,7 +61,8 @@ public class Main {
     
     get("/ExchangeRate", (req, res) ->{
       	String id= req.queryParams("id");
-      	return id;
+      	ExchangeRate exR = new ExchangeRate(id);
+      	return exR.getData();
     });
     
     get("/Scale", (req, res) ->{

@@ -60,4 +60,9 @@ public class ExchangeRate
 		} 
 		catch (SQLException e) {}
 	}
+	
+	public String getData()
+	{
+		return "Currency: " + Currency + ", Buy: " + BuyRateAfterRatio + ", Sell: "+ SellRateAfterRatio;
+	}
 }
