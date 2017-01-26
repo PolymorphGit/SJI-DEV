@@ -62,4 +62,9 @@ public class FG
 			npd = newNPD;
 		}
 	}
+	
+	public String getData()
+	{
+		return "Name: " + Name + ", Annual Volume: " + AnnualVolume + ", Unit Pack Size: " + UnitPackSize;
+	}
 }

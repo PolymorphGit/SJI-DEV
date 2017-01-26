@@ -1,19 +1,19 @@
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class RD_Hierarchy {
+public class RDHierarchy {
 	
-	public String id;
-	public String name;
-	public String machineType;
-	public double sgMax;
-	public double scrap;
+	public String Id;
+	public String Name;
+	public String MachineType;
+	public double SGMax;
+	public double Scrap;
 	
-	public RD_Hierarchy(ResultSet rs) {
+	public RDHierarchy(ResultSet rs) {
 		LoadData(rs);
 	}
 	
-	public RD_Hierarchy(String id)
+	public RDHierarchy(String id)
 	{
 		ResultSet rs = DataManager.Query("Select * from salesforce.RD_Hierarchy__c where SFID='" + id + "'");
 		try {
@@ -31,11 +31,11 @@ public class RD_Hierarchy {
 	{
 		try {
 			
-			id = rs.getString("SFID");
-			name = rs.getString("name");
-			machineType = rs.getString("machine_type__c");
-			sgMax = rs.getDouble("sg_max__c");
-			scrap = rs.getDouble("scrap__c");
+			Id = rs.getString("SFID");
+			Name = rs.getString("name");
+			MachineType = rs.getString("machine_type__c");
+			SGMax = rs.getDouble("sg_max__c");
+			Scrap = rs.getDouble("scrap__c");
 			
 		} catch(SQLException sql) {
 			sql.getMessage();	
