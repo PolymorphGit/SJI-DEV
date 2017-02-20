@@ -75,12 +75,12 @@ public class Material {
 		for(ProductInfo pro : listProInfo)
 		{
 			output += "Product Info Id: " + pro.Id + ", Plant: " + pro.Plant + "<br/>";
-			/*
+			
 			for(Scale sc : pro.listScale)
 			{
 				output += " - Qty: " + sc.Quantity + ", Price: " + sc.UnitPriceAfterLandedCost + "<br/>";
 			}
-			*/
+			
 		}
 		
 		return output;
