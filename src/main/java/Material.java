@@ -52,7 +52,7 @@ public class Material {
 	{
 		try 
 		{
-			ResultSet rs = DataManager.Query("SELECT * FROM salesforce.Product_Catalog__c where NPD__c = '" + Id + "'");
+			ResultSet rs = DataManager.Query("SELECT * FROM salesforce.Product_Catalog__c where raw_material__c = '" + Id + "'");
 			while (rs.next()) 
 	        {
 				ProductInfo newProductInfo = new ProductInfo(rs);
