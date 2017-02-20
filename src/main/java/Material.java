@@ -71,6 +71,7 @@ public class Material {
 	{
 		String output; // = "Query: " + QueryCmd + "<br/> ";
 		output = MaterialName + " (" + MaterialCode + ")<br/>";
+		/*
 		for(ProductInfo pro : listProInfo)
 		{
 			output += "Product Info Id: " + pro.Id + ", Plant: " + pro.Plant + "<br/>";
@@ -81,6 +82,7 @@ public class Material {
 			}
 			
 		}
+		*/
 		return output;
 		//return "Success";
 	}
