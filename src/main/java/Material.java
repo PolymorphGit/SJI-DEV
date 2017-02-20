@@ -75,7 +75,7 @@ public class Material {
 	{
 		try 
 		{
-			ResultSet rs = DataManager.Query("SELECT * FROM salesforce.Material_Conversion__c where raw_material__c = '" + Id + "'");
+			ResultSet rs = DataManager.Query("SELECT * FROM salesforce.Material_Conversion__c where Material__c = '" + Id + "'");
 			while (rs.next()) 
 	        {
 				MaterialConversion matConvert = new MaterialConversion(rs);

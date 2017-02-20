@@ -33,15 +33,7 @@ public class MaterialConversion {
 			e.printStackTrace();
 		}
 	}
-	
-	public void linkMaterial(Material mat)
-	{
-		if(mat.Id.equals(MaterialId))
-		{
-			Material = mat;
-		}
-	}
-	
+		
 	private void LoadData(ResultSet rs)
 	{
 		try {
@@ -56,4 +48,11 @@ public class MaterialConversion {
 		catch (SQLException e) {}
 	}
 	
+	public void linkMaterial(Material mat)
+	{
+		if(mat.Id.equals(MaterialId))
+		{
+			Material = mat;
+		}
+	}
 }
