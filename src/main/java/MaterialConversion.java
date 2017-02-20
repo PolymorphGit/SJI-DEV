@@ -34,6 +34,14 @@ public class MaterialConversion {
 		}
 	}
 	
+	public void linkMaterial(Material mat)
+	{
+		if(mat.Id.equals(MaterialId))
+		{
+			Material = mat;
+		}
+	}
+	
 	private void LoadData(ResultSet rs)
 	{
 		try {

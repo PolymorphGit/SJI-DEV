@@ -13,6 +13,7 @@ public class Material {
 	public Double MOQ;
 	
 	public ArrayList<ProductInfo> listProInfo;
+	public ArrayList<MaterialConversion> listMatConvert;
 	
 	public Material(ResultSet rs)
 	{
@@ -44,6 +45,9 @@ public class Material {
 			
 			listProInfo = new ArrayList<ProductInfo>();
 			LoadProductInfo();
+			
+			listMatConvert = new ArrayList<MaterialConversion>();
+			LoadMatConvert();
 		} 
 		catch (SQLException e) {}
 	}
@@ -67,6 +71,25 @@ public class Material {
 		}
 	}
 	
+	private void LoadMatConvert()
+	{
+		try 
+		{
+			ResultSet rs = DataManager.Query("SELECT * FROM salesforce.Material_Conversion__c where raw_material__c = '" + Id + "'");
+			while (rs.next()) 
+	        {
+				MaterialConversion matConvert = new MaterialConversion(rs);
+				matConvert.linkMaterial(this);
+				listMatConvert.add(matConvert);
+	        }
+		} 
+		catch (SQLException e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	public String getResult()
 	{
 		String output; // = "Query: " + QueryCmd + "<br/> ";
@@ -78,14 +101,19 @@ public class Material {
 			
 			for(Scale sc : pro.listScale)
 			{
-				output += " - Qty: " + sc.Quantity + ", Price: " + sc.UnitPriceAfterLandedCost + "<br/>";
+				output += " - Qty: " + sc.Quantity + ", Price: " + sc.UnitPriceAfterLandedCost + ", Active: " + sc.Active + "<br/>";
 			}
 			
 		}
 		
+		output += "Material Convert:<br/>";
+		for(MaterialConversion matC : listMatConvert)
+		{
+			output += " - " + matC.BaseRate + " " + matC.BaseUnit + " to " + matC.AlternativeRate + " " + matC.AlternativeUnit + "<br/>";
+		}
+			
 		return output;
 		//return "Success";
-	}
-	
+	}	
 	
 }
