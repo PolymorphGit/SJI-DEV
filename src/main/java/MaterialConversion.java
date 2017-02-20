@@ -40,7 +40,7 @@ public class MaterialConversion {
 			Id = rs.getString("SFID");
 			AlternativeUnit = rs.getString("Alternative_Unit__c");
 			AlternativeRate = rs.getDouble("Alternative_Rate__c");
-			BaseUnit = rs.getString("Base_Unit__c");
+			//BaseUnit = rs.getString("Base_Unit__c");
 			BaseRate = rs.getDouble("Base_Rate__c");
 			
 			MaterialId = rs.getString("Material__c");
@@ -53,6 +53,7 @@ public class MaterialConversion {
 		if(mat.Id.equals(MaterialId))
 		{
 			Material = mat;
+			BaseUnit = mat.BaseUnit;
 		}
 	}
 }
