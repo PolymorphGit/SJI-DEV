@@ -43,7 +43,7 @@ public class Material {
 			MOQ = rs.getDouble("MOQ__c");
 			
 			listProInfo = new ArrayList<ProductInfo>();
-			LoadProductInfo();
+			//LoadProductInfo();
 		} 
 		catch (SQLException e) {}
 	}
