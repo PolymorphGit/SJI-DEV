@@ -52,7 +52,7 @@ public class ProductInfo {
 			StandardQuantity = rs.getDouble("Standard_Quantity__c");
 			
 			MaterialId = rs.getString("Raw_Material__c");
-			LoadSales();
+			//LoadSales();
 		} 
 		catch (SQLException e) {}
 	}
