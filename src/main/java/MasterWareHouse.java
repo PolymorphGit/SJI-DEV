@@ -38,4 +38,9 @@ public class MasterWareHouse {
 		} 
 		catch (SQLException e) {}
 	}
+	
+	public String getData()
+	{
+		return "Name: " + Name + ", Cost per Pallet: " + CostPerPallet;
+	}
 }

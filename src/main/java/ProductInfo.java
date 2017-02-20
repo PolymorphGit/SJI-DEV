@@ -53,4 +53,12 @@ public class ProductInfo {
 		} 
 		catch (SQLException e) {}
 	}
+	
+	public void linkMaterial(Material mat)
+	{
+		if(mat.Id.equals(MaterialId))
+		{
+			Material = mat;
+		}
+	}
 }

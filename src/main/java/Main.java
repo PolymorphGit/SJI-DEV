@@ -37,7 +37,15 @@ public class Main {
     });
     
     get("/ExchangeRate", (req, res) ->{
-      	String id= req.queryParams("id");
+      	String id = req.queryParams("id");
+      	String isManual = req.queryParams("Manual");
+      	
+      	if(isManual.equals("TRUE"))
+      	{
+      		ManualExchangeRate mExR = new ManualExchangeRate(id);
+      		return mExR.getData();
+      	}
+      	
       	ExchangeRate exR = new ExchangeRate(id);
       	return exR.getData();
     });
@@ -59,6 +67,26 @@ public class Main {
       	Scale sc = new Scale(id);
       	return sc.getData();
     });
+    
+    get("/MasterPackaging", (req, res) ->{
+      	String id = req.queryParams("id");
+      	MasterPackagingType PackType = new MasterPackagingType(id);
+      	return PackType.getData();
+    });
+    
+    get("/MasterQuality", (req, res) ->{
+      	String id = req.queryParams("id");
+      	MasterQualityCost MasterQuality = new MasterQualityCost(id);
+      	return MasterQuality.getData();
+    });
+    
+    get("/MasterWareHouse", (req, res) ->{
+      	String id = req.queryParams("id");
+      	MasterWareHouse MasterWarehouse = new MasterWareHouse(id);
+      	return MasterWarehouse.getData();
+    });
+    
+    
     
     get("/IdealPrice", (req, res) ->{
     	String id= req.queryParams("id");

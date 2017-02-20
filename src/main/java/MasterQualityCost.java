@@ -38,4 +38,9 @@ public class MasterQualityCost {
 		} 
 		catch (SQLException e) {}
 	}
+	
+	public String getData()
+	{
+		return "Name: " + Name + ", Cost: " + Cost;
+	}
 }

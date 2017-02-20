@@ -12,6 +12,8 @@ public class Material {
 	public String BaseUnit;
 	public Double MOQ;
 	
+	public ArrayList<ProductInfo> listProInfo;
+	
 	public Material(ResultSet rs)
 	{
 		LoadData(rs);
@@ -39,7 +41,49 @@ public class Material {
 			MaterialName = rs.getString("Raw_Material_Name_TH__c");
 			BaseUnit = rs.getString("Base_Unit__c");
 			MOQ = rs.getDouble("MOQ__c");
+			
+			listProInfo = new ArrayList<ProductInfo>();
+			LoadProductInfo();
 		} 
 		catch (SQLException e) {}
 	}
+	
+	private void LoadProductInfo()
+	{
+		try 
+		{
+			ResultSet rs = DataManager.Query("SELECT * FROM salesforce.Product_Catalog__c where NPD__c = '" + Id + "'");
+			while (rs.next()) 
+	        {
+				ProductInfo newProductInfo = new ProductInfo(rs);
+				newProductInfo.linkMaterial(this);
+				listProInfo.add(newProductInfo);
+	        }
+		} 
+		catch (SQLException e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public String getResult()
+	{
+		String output; // = "Query: " + QueryCmd + "<br/> ";
+		output = MaterialName + " (" + MaterialCode + ")<br/>";
+		for(ProductInfo pro : listProInfo)
+		{
+			output += "Product Info Id: " + pro.Id + "<br/>";
+			/*
+			for(FG fg : npd.listFG)
+			{
+				output += " - FG Name: " + fg.Name + ", MOQ: " + fg.MOQ1 + ", Annual: " + fg.AnnualVolume + ", Launch:" + fg.LaunchVolume + "<br/>";
+			}
+			*/
+		}
+		return output;
+		//return "Success";
+	}
+	
+	
 }

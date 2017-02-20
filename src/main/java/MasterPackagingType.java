@@ -44,4 +44,11 @@ public class MasterPackagingType {
 		} 
 		catch (SQLException e) {}
 	}
+	
+	public String getData()
+	{
+		String output = "Packaging Type: " + PackagingType + ", Primary: " + PrimaryPackagingType + ", Secondary: " + SecondaryPackagingType;
+		output += "<br/>Scrap: " + Scrap + ", Unit: " + UnitMeasure;
+		return output;
+	}
 }
