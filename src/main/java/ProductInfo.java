@@ -52,7 +52,9 @@ public class ProductInfo {
 			StandardQuantity = rs.getDouble("Standard_Quantity__c");
 			
 			MaterialId = rs.getString("Raw_Material__c");
-			LoadSales();
+			
+			listScale = new ArrayList<Scale>();
+			LoadScales();
 		} 
 		catch (SQLException e) {}
 	}
@@ -65,7 +67,7 @@ public class ProductInfo {
 		}
 	}
 	
-	private void LoadSales()
+	private void LoadScales()
 	{
 		try 
 		{
