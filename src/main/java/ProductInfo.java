@@ -69,7 +69,7 @@ public class ProductInfo {
 	{
 		try 
 		{
-			ResultSet rs = DataManager.Query("SELECT * FROM salesforce.Scales__c where product_catalog__c = '" + Id + "'");
+			ResultSet rs = DataManager.Query("SELECT * FROM salesforce.Scale__c where product_catalog__c = '" + Id + "'");
 			while (rs.next()) 
 	        {
 				Scale newScale = new Scale(rs);
