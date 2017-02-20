@@ -17,6 +17,8 @@ public class ProductInfo {
 	
 	public String MaterialId;
     public Material Material;
+    
+    public ArrayList<Scale> listScale;
 	
 	public ProductInfo(ResultSet rs)
 	{
@@ -50,6 +52,7 @@ public class ProductInfo {
 			StandardQuantity = rs.getDouble("Standard_Quantity__c");
 			
 			MaterialId = rs.getString("Raw_Material__c");
+			LoadSales();
 		} 
 		catch (SQLException e) {}
 	}
@@ -59,6 +62,25 @@ public class ProductInfo {
 		if(mat.Id.equals(MaterialId))
 		{
 			Material = mat;
+		}
+	}
+	
+	private void LoadSales()
+	{
+		try 
+		{
+			ResultSet rs = DataManager.Query("SELECT * FROM salesforce.Scales__c where product_catalog__c = '" + Id + "'");
+			while (rs.next()) 
+	        {
+				Scale newScale = new Scale(rs);
+				newScale.linkProductInfo(this);
+				listScale.add(newScale);
+	        }
+		} 
+		catch (SQLException e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 }

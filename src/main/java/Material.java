@@ -73,13 +73,13 @@ public class Material {
 		output = MaterialName + " (" + MaterialCode + ")<br/>";
 		for(ProductInfo pro : listProInfo)
 		{
-			output += "Product Info Id: " + pro.Id + "<br/>";
-			/*
-			for(FG fg : npd.listFG)
+			output += "Product Info Id: " + pro.Id + ", Plant: " + pro.Plant + "<br/>";
+			
+			for(Scale sc : pro.listScale)
 			{
-				output += " - FG Name: " + fg.Name + ", MOQ: " + fg.MOQ1 + ", Annual: " + fg.AnnualVolume + ", Launch:" + fg.LaunchVolume + "<br/>";
+				output += " - Qty: " + sc.Quantity + ", Price: " + sc.UnitPriceAfterLandedCost + "<br/>";
 			}
-			*/
+			
 		}
 		return output;
 		//return "Success";

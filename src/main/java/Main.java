@@ -86,7 +86,11 @@ public class Main {
       	return MasterWarehouse.getData();
     });
     
-    
+    get("/Material", (req, res) ->{
+      	String id = req.queryParams("id");
+      	Material mat = new Material(id);
+      	return mat.getResult();
+    });
     
     get("/IdealPrice", (req, res) ->{
     	String id= req.queryParams("id");

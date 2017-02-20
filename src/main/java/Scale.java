@@ -70,6 +70,14 @@ public class Scale {
 		catch (SQLException e) {}
 	}
 	
+	public void linkProductInfo(ProductInfo proInfo)
+	{
+		if(proInfo.Id.equals(ProductInfoId))
+		{
+			ProductInfo = proInfo;
+		}
+	}
+	
 	public String getData()
 	{
 		return "Currency: " + Currency + ", Price: " + Price + ", Unit Price(+ Landed Cost): " + UnitPriceAfterLandedCost + ", Check: " + Currency.equals("JPY");
