@@ -127,7 +127,7 @@ public class Bulk {
 	public String getData()
 	{
 		String output = "Name: " + Name + ", Quantity per Each" + QuantityPerEach + ", MaxFill: " + MaxFill + "<br/>";
-		output += "RD Hierarchy: " + RDHierarchyId + ", SG: " + RDHierarchy.SGMax;
+		output += "RD Hierarchy: " + RDHierarchyId + ", SG: " + RDHierarchy.SGMax + "<br/>";
 		
 		for(BOMHeader bomH : listBOMH)
 		{
@@ -135,7 +135,7 @@ public class Bulk {
 			
 			for(BOMDetail bomD : bomH.listBOMDetail)
 			{
-				output += " - Material: " + bomD.material.MaterialName + ", Percent: " + bomD.Percent + ", Scrap: " + bomD.Scrap + ", Plant: " + bomD.Plant + "<br/>";
+				output += " - Material: " + bomD.material.MaterialCode + ", Percent: " + bomD.Percent + ", Scrap: " + bomD.Scrap + ", Plant: " + bomD.Plant + "<br/>";
 			}
 			
 		}
