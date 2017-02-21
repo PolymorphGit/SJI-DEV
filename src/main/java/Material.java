@@ -14,6 +14,7 @@ public class Material {
 	
 	public ArrayList<ProductInfo> listProInfo;
 	public ArrayList<MaterialConversion> listMatConvert;
+	public ArrayList<BOMHeader> listBOMHeader;
 	
 	public Material(ResultSet rs)
 	{

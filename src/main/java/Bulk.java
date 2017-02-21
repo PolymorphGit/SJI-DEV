@@ -1,9 +1,10 @@
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class Bulk {
 	
-	public String id;
+	public String Id;
 	public String Name;
 	public Double QuantityPerEach;
 	public String QuantityUnitPerEach;
@@ -18,6 +19,11 @@ public class Bulk {
 	
 	public String RDHierarchyId;
 	public RDHierarchy RDHierarchy;
+	
+	public String NPDId;
+	public NPD npd;
+	
+	public ArrayList<BOMHeader> listBOMH;
 	
 	public Bulk(ResultSet rs) {
 		LoadData(rs);
@@ -41,7 +47,7 @@ public class Bulk {
 	{
 		try {
 			
-			id = rs.getString("SFID");
+			Id = rs.getString("SFID");
 			Name = rs.getString("name");
 			
 			QuantityPerEach = rs.getDouble("Quantity_per_Each__c");
@@ -56,6 +62,11 @@ public class Bulk {
 			RDHierarchyId = rs.getString("rd_hierarchy__c");
 			RDHierarchy rdh = new RDHierarchy(RDHierarchyId);
 			linkRDHierarchy(rdh);
+			
+			NPDId = rs.getString("NPD__c");
+			
+			listBOMH = new ArrayList<BOMHeader>();
+			LoadBOMHeader();
 			
 		} catch(SQLException e) {
 			
@@ -84,10 +95,51 @@ public class Bulk {
 		}
 	}
 	
+	private void LoadBOMHeader()
+	{
+		try 
+		{
+			ResultSet rs = DataManager.Query("SELECT * FROM salesforce.BOM_Header__c where Formula__c = '" + Id + "'");
+			while (rs.next()) 
+	        {
+				BOMHeader newBOMHeader = new BOMHeader(rs);
+				newBOMHeader.linkBulk(this);
+				listBOMH
+				
+				.add(newBOMHeader);
+	        }
+		} 
+		catch (SQLException e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void linkNPD(NPD newNPD)
+	{
+		if(newNPD.Id.equals(NPDId))
+		{
+			npd = newNPD;
+		}
+	}
+	
 	public String getData()
 	{
 		String output = "Name: " + Name + ", Quantity per Each" + QuantityPerEach + ", MaxFill: " + MaxFill + "<br/>";
 		output += "RD Hierarchy: " + RDHierarchyId + ", SG: " + RDHierarchy.SGMax;
+		
+		for(BOMHeader bomH : listBOMH)
+		{
+			output += "BOM Number: " + bomH.Name + ", Status: " + bomH.Status + ", Base Unit: " + bomH.BaseUnit + "<br/>";
+			
+			for(BOMDetail bomD : bomH.listBOMDetail)
+			{
+				output += " - Material: " + bomD.material.MaterialName + ", Percent: " + bomD.Percent + ", Scrap: " + bomD.Scrap + ", Plant: " + bomD.Plant + "<br/>";
+			}
+			
+		}
+		
 		return output;
 	}
 }
