@@ -9,7 +9,6 @@ public class PackagingOption {
 	public String Id;
 	public String Name;
 	public String ColorFinish;
-	public String PackagingName;
 	public String Status;
 	
 	public String PackagingId;
@@ -42,7 +41,6 @@ public class PackagingOption {
 			Id = rs.getString("SFID");
 			Name = rs.getString("Name");
 			ColorFinish = rs.getString("Colours_Finishes__c");
-			PackagingName = rs.getString("Packaging_Name__c");
 			Status = rs.getString("Status__c");
 			
 			PackagingId = rs.getString("Packaging__c");

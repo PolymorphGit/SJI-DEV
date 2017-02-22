@@ -113,17 +113,18 @@ public class Packaging {
 	public String getData()
 	{
 		String output = "Name: " + Name + ", Order: " + MinimumOrder + ", Base Unit: " + BaseUnitOfMeasure + "<br/>";
-		/*
+		
 		for(PackagingOption packOp : listPackOp)
 		{
 			output += "Packaging Option: " + packOp.Name + ", Color: " + packOp.ColorFinish + ", Status: " + packOp.Status + "<br/>";
-			
+			/*
 			for(PackagingOptionMOQ moq : packOp.listMOQ)
 			{
 				output += " - MOQ: " + moq.MOQ + ", Cost: " + moq.Cost + ", Order Unit: " + moq.OrderUnit + "<br/>";
 			}
+			*/
 		}
-		*/
+		
 		return output;
 	}
 }
