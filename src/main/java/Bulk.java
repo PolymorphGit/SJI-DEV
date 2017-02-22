@@ -104,9 +104,7 @@ public class Bulk {
 	        {
 				BOMHeader newBOMHeader = new BOMHeader(rs);
 				newBOMHeader.linkBulk(this);
-				listBOMH
-				
-				.add(newBOMHeader);
+				listBOMH.add(newBOMHeader);
 	        }
 		} 
 		catch (SQLException e) 

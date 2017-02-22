@@ -70,8 +70,6 @@ public class Packaging {
 			SelectCost = rs.getDouble("Selected_Cost__c");
 			
 			IsFree = rs.getBoolean("Is_Free__c"); 
-			CountOption = rs.getDouble("Count_Option__c");
-			CountOptionMOQ = rs.getDouble("Count_Option_MOQ__c");
 			
 			PackagingTypeId = rs.getString("Master_Packaging_Type__c");
 			ProductInfoId = rs.getString("Product_Information_Record__c");
@@ -115,14 +113,13 @@ public class Packaging {
 		String output = "Name: " + Name + ", Order: " + MinimumOrder + ", Base Unit: " + BaseUnitOfMeasure + "<br/>";
 		
 		for(PackagingOption packOp : listPackOp)
-		{/*
+		{
 			output += "Packaging Option: " + packOp.Name + ", Color: " + packOp.ColorFinish + ", Status: " + packOp.Status + "<br/>";
 			
 			for(PackagingOptionMOQ moq : packOp.listMOQ)
 			{
 				output += " - MOQ: " + moq.MOQ + ", Cost: " + moq.Cost + ", Order Unit: " + moq.OrderUnit + "<br/>";
 			}
-			*/
 		}
 		
 		return output;
