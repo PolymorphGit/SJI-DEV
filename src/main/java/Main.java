@@ -62,12 +62,6 @@ public class Main {
       	return bulk.getData();
     });
     
-    get("/Scale", (req, res) ->{
-      	String id = req.queryParams("id");
-      	Scale sc = new Scale(id);
-      	return sc.getData();
-    });
-    
     get("/MasterPackaging", (req, res) ->{
       	String id = req.queryParams("id");
       	MasterPackagingType PackType = new MasterPackagingType(id);
@@ -84,6 +78,12 @@ public class Main {
       	String id = req.queryParams("id");
       	MasterWareHouse MasterWarehouse = new MasterWareHouse(id);
       	return MasterWarehouse.getData();
+    });
+    
+    get("/Packaging", (req, res) ->{
+    	String id = req.queryParams("id");
+    	Packaging pack = new Packaging(id);
+    	return pack.getData();
     });
     
     get("/Material", (req, res) ->{
