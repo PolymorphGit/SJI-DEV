@@ -17,6 +17,7 @@ public class Packaging {
 	public Double ToolingCost;
 	public Double MOQ;
 	public Double MinimumOrder;
+	public Double Cost;
 	
 	public Double SelectMOQ;
 	public Double SelectCost;
@@ -67,6 +68,7 @@ public class Packaging {
 			ToolingCost = rs.getDouble("Tooling_Cost__c");
 			MOQ = rs.getDouble("MOQ__c");
 			MinimumOrder = rs.getDouble("Minimum_Order__c");
+			Cost = rs.getDouble("Costing__c");
 			
 			SelectMOQ = rs.getDouble("Selected_MOQ__c");
 			SelectCost = rs.getDouble("Selected_Cost__c");
@@ -80,7 +82,7 @@ public class Packaging {
 			npdId = rs.getString("NPD__c");
 			
 			listPackOp = new ArrayList<PackagingOption>();
-			//LoadOption();
+			LoadOption();
 		} 
 		catch (SQLException e) {}
 	}
@@ -106,8 +108,8 @@ public class Packaging {
 	
 	public String getData()
 	{
-		String output = "Name: " + Name + ", Packaging Name" + PackagingName + ", Base Unit: " + BaseUnitOfMeasure + "<br/>";
-		/*
+		String output = "Name: " + Name + ", Cost: " + Cost + ", Base Unit: " + BaseUnitOfMeasure + "<br/>";
+		
 		for(PackagingOption packOp : listPackOp)
 		{
 			output += "Packaging Option: " + packOp.Name + ", Color: " + packOp.ColorFinish + ", Status: " + packOp.Status + "<br/>";
@@ -118,7 +120,7 @@ public class Packaging {
 			}
 			
 		}
-		*/
+		
 		return output;
 	}
 }

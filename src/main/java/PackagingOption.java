@@ -47,7 +47,7 @@ public class PackagingOption {
 			
 			PackagingId = rs.getString("Packaging__c");
 			listMOQ = new ArrayList<PackagingOptionMOQ>();
-			LoadMOQ();
+			///LoadMOQ();
 		} 
 		catch (SQLException e) {}
 	}
