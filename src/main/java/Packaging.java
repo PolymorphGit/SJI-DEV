@@ -78,7 +78,7 @@ public class Packaging {
 			npdId = rs.getString("NPD__c");
 			
 			listPackOp = new ArrayList<PackagingOption>();
-			//LoadOption();
+			LoadOption();
 		} 
 		catch (SQLException e) {}
 	}
@@ -113,7 +113,7 @@ public class Packaging {
 	public String getData()
 	{
 		String output = "Name: " + Name + ", Order: " + MinimumOrder + ", Base Unit: " + BaseUnitOfMeasure + "<br/>";
-		/*
+		
 		for(PackagingOption packOp : listPackOp)
 		{
 			output += "Packaging Option: " + packOp.Name + ", Color: " + packOp.ColorFinish + ", Status: " + packOp.Status + "<br/>";
@@ -124,7 +124,6 @@ public class Packaging {
 			}
 			
 		}
-		*/
 		return output;
 	}
 }
