@@ -45,7 +45,7 @@ public class PackagingOption {
 			
 			PackagingId = rs.getString("Packaging__c");
 			listMOQ = new ArrayList<PackagingOptionMOQ>();
-			//LoadMOQ();
+			LoadMOQ();
 		} 
 		catch (SQLException e) {}
 	}
@@ -54,7 +54,7 @@ public class PackagingOption {
 	{
 		try 
 		{
-			ResultSet rs = DataManager.Query("SELECT * FROM salesforce.Leaf_BOM__c where Packaging_Option_MOQ__c = '" + Id + "'");
+			ResultSet rs = DataManager.Query("SELECT * FROM salesforce.Packaging_Option_MOQ__c where Packaging_Option__c = '" + Id + "'");
 			while (rs.next()) 
 	        {
 				PackagingOptionMOQ newPackMOQ = new PackagingOptionMOQ(rs);
