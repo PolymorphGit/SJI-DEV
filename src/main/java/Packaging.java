@@ -104,13 +104,16 @@ public class Packaging {
 	
 	private void linkPackagingType(MasterPackagingType mPack)
 	{
-		
+		if(mPack.Id.equals(PackagingTypeId))
+		{
+			PackagingType = mPack;
+		}
 	}
 	
 	public String getData()
 	{
 		String output = "Name: " + Name + ", Order: " + MinimumOrder + ", Base Unit: " + BaseUnitOfMeasure + "<br/>";
-		
+		/*
 		for(PackagingOption packOp : listPackOp)
 		{
 			output += "Packaging Option: " + packOp.Name + ", Color: " + packOp.ColorFinish + ", Status: " + packOp.Status + "<br/>";
@@ -121,7 +124,7 @@ public class Packaging {
 			}
 			
 		}
-		
+		*/
 		return output;
 	}
 }
