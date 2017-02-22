@@ -91,7 +91,7 @@ public class Packaging {
 	{
 		try 
 		{
-			ResultSet rs = DataManager.Query("SELECT * FROM salesforce.Leaf_BOM__c where Packaging__c = '" + Id + "'");
+			ResultSet rs = DataManager.Query("SELECT * FROM salesforce.Packaging_Option__c where Packaging__c = '" + Id + "'");
 			while (rs.next()) 
 	        {
 				PackagingOption newPackOp = new PackagingOption(rs);
