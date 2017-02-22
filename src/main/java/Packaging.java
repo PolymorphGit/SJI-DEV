@@ -102,9 +102,14 @@ public class Packaging {
 		}
 	}
 	
+	private void linkPackagingType(MasterPackagingType mPack)
+	{
+		
+	}
+	
 	public String getData()
 	{
-		String output = "Name: " + Name + ", Order: " + Cost + ", Base Unit: " + BaseUnitOfMeasure + "<br/>";
+		String output = "Name: " + Name + ", Order: " + MinimumOrder + ", Base Unit: " + BaseUnitOfMeasure + "<br/>";
 		
 		for(PackagingOption packOp : listPackOp)
 		{
