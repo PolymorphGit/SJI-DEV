@@ -44,7 +44,6 @@ public class Account
 		
 	private void LoadData(ResultSet rs)
 	{
-		System.out.println("Record: !" + rs);
 		try 
 		{
 			Id = rs.getString("SFID");
@@ -61,10 +60,7 @@ public class Account
 			CustomerCode = rs.getString("Brand__c");
 			CustomerStatus = rs.getString("Brand__c");
 		} 
-		catch (SQLException e) 
-		{
-			System.out.println("Exception: " + e);
-		}
+		catch (SQLException e) { }
 	}
 	
 	public String getData()

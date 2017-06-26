@@ -18,6 +18,7 @@ public class FG
 	
 	public String npdId;
 	public NPD npd;
+	public FGOption option;
 	
 	public FG(ResultSet rs)
 	{
@@ -51,8 +52,27 @@ public class FG
 			UnitPackSize = rs.getDouble("Unit_Pack_Size__c");
 			
 			npdId = rs.getString("NPD__c");
+			LoadFGOption();
 		} 
 		catch (SQLException e) {}
+	}
+	
+	private void LoadFGOption()
+	{
+		try 
+		{
+			ResultSet rs = DataManager.Query("SELECT * FROM salesforce.Selected_Material_Option__c where final__c=true AND fg__c = '" + Id + "'");
+			while (rs.next()) 
+	        {
+				option = new FGOption(rs);
+				option.linkFG(this);
+	        }
+		} 
+		catch (SQLException e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public void linkNPD(NPD newNPD)
