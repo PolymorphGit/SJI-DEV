@@ -110,11 +110,12 @@ public class Main {
 		  return "ID is Blank";
 	}
 	
-	//Account acc = new Account(id);
-	//IdealPrice idealPrice = new IdealPrice(acc);
+	Account acc = new Account(id);
+	System.out.println("Hello, logs!" + acc.Id);
+	IdealPrice idealPrice = new IdealPrice(acc);
       
-	//return idealPrice.getResult();
-	return id;
+	return idealPrice.getResult();
+	//return id;
   }
 
 }
